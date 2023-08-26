@@ -1,0 +1,80 @@
+{%extends "home.html" %}
+{%block "test1"%}
+<!-- <style>.text-bold {
+    font-weight: 800;
+}
+text-color {
+    color: #c62f2f;
+}
+.main-img img {
+    width: 100%;
+}
+.main-description .category {
+    text-transform: uppercase;
+    color: #a80f0f;
+}
+.main-description .product-title {
+    font-size: 2.5rem;
+}
+.new-price {
+    font-size: 2rem;
+}
+
+.details-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #757575;
+}
+.quantity input {
+    border-radius: 0;
+    height: 40px;
+}
+</style> -->
+
+<!-- {% if messages %}
+{%for msg in messages%}
+<div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert"></a>
+{{msg}}
+</div>
+{%endfor%}
+{% endif %} -->
+    <div class="container my-5">
+        <form method="post" action="/addtocart">
+            {%csrf_token%}   
+                <input type="hidden" name="pid" value="{{prod.id}}"/>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="main-img">
+                    <img class="img-fluid img-responsive" style="border: 1;" src="{{prod.image.url}}" alt="ProductS">
+                </div>
+            </div>
+        
+            <div class="col-md-7">
+                <div class="main-description px-2">
+                    <div class="category text-bold">
+                        Category: {{prod.category.categoryname}}
+                    </div>
+                    <div class="product-title text-bold my-3">
+                        {{prod.pname}}
+                    </div>
+                    <div class="price-area my-4">
+                        <p class="new-price text-bold mb-1">Price {{prod.price}}</p>
+                        <p class="text-secondary mb-1">(Additional tax may apply on checkout)</p>
+                    </div>
+            </div>
+        
+        <div class=" d-flex my-5">
+        <button type="submit" class="btn btn-primary" name="action" value="wishlist">Add To Wishlist</button>
+        <button type="submit" class="btn btn-primary" name="action" value="addtocart">Add to cart</button>
+        
+        
+        <div class="block quantity">
+            <input type="number" class="form-control" value="1" min="0" max="5" name="qty" placeholder="Quantity">
+        </div>
+    </div>
+</form>
+    </div></div>
+</div>
+{%endblock%}

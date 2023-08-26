@@ -1,0 +1,493 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shopping Point</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
+    </head>
+    <style>
+        .bg-image{
+  /* The image used */
+  background-image: url('{% static "wlppr.jpg" %}');
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 80%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+
+ .bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; 
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+style>
+    body {
+        background: #e2eaef;
+        font-family: "Open Sans", sans-serif;
+    }
+    .h22 {
+        color: #000;
+        font-size: 26px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        margin: 30px 0 60px;
+    }
+    .h22::after {
+        content: "";
+        width: 100px;
+        position: absolute;
+        margin: 0 auto;
+        height: 4px;
+        border-radius: 1px;
+        background: #7ac400;
+        left: 0;
+        right: 0;
+        bottom: -20px;
+    }
+    .carousel {
+        margin: 50px auto;
+        padding: 0 70px;
+    }
+    .carousel .item {
+        color: #747d89;
+        min-height: 325px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .carousel .thumb-wrapper {
+        padding: 25px 15px;
+        background: #fff;
+        border-radius: 6px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    }
+    .carousel .item .img-box {
+        height: 120px;
+        margin-bottom: 20px;
+        width: 100%;
+        position: relative;
+    }
+    .carousel .item img {	
+        max-width: 100%;
+        max-height: 100%;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+    .carousel .item h4 {
+        font-size: 18px;
+    }
+    .carousel .item h4, .carousel .item p, .carousel .item ul {
+        margin-bottom: 5px;
+    }
+    .carousel .thumb-content {
+        color: #7ac400;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: none;
+        border: 1px solid #7ac400;
+        padding: 6px 14px;
+        margin-top: 5px;
+        line-height: 16px;
+        border-radius: 20px;
+    }
+    .btn {
+        
+        color: #7ac400;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: none;
+        border: 1px solid #7ac400;
+        padding: 6px 14px;
+        margin-top: 5px;
+        line-height: 16px;
+        border-radius: 20px;
+    }
+    .carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
+        color: #fff;
+        background: #7ac400;
+        box-shadow: none;
+    }
+    /* .btn:hover{
+        color: #fff;
+        background: #7ac400;
+        box-shadow: none; 
+
+    }*/
+    .carousel .thumb-content .btn i {
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    .carousel .item-price {
+        font-size: 13px;
+        padding: 2px 0;
+    }
+    .carousel .item-price strike {
+        opacity: 0.7;
+        margin-right: 5px;
+    }
+    
+    .carousel-control-prev i {
+        margin-left: -2px;
+    }
+    .carousel-control-next i {
+        margin-right: -4px;
+    }		
+    .carousel-indicators {
+        bottom: -50px;
+    }
+    .carousel-indicators li, .carousel-indicators li.active {
+        width: 10px;
+        height: 10px;
+        margin: 4px;
+        border-radius: 50%;
+        border: none;
+    }
+    .carousel-indicators li {	
+        background: rgba(0, 0, 0, 0.2);
+    }
+    .carousel-indicators li.active {	
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .carousel .wish-icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 99;
+        cursor: pointer;
+        font-size: 16px;
+        color: #abb0b8;
+    }
+    .carousel .wish-icon .fa-heart {
+        color: #ff6161;
+    }
+    .star-rating li {
+        padding: 0;
+    }
+    .star-rating i {
+        font-size: 14px;
+        color: #ffc000;
+    }
+
+ /* card */
+ .flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: rgb(42, 202, 14);
+  color: black;
+  transform: rotateY(180deg);
+}
+/* proddetails */
+.text-bold {
+    font-weight: 800;
+}
+text-color {
+    color: #c62f2f;
+}
+.main-img img {
+    width: 100%;
+}
+.main-description .category {
+    text-transform: uppercase;
+    color: #a80f0f;
+}
+.main-description .product-title {
+    font-size: 2.5rem;
+}
+.new-price {
+    font-size: 2rem;
+}
+
+.details-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #757575;
+}
+.quantity input {
+    border-radius: 0;
+    height: 40px;
+}
+
+/* cartitems */
+.btnn{
+    height:40px;
+    width: 40px;
+    border: none;
+    outline: none;
+    background-color: rgb(193, 64, 64);
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+}
+.cart-page{
+    margin: 80px auto;
+}
+table{
+    width: 70%;
+    border-collapse: collapse;
+    margin: auto;
+}
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+th{
+    text-align: left;
+    padding: 5px;
+    color: rgb(112, 25, 25);
+    /* backgro */
+    font-weight: bold;
+}
+td{
+    padding: 10px 5px;
+}
+td input{
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+}
+td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+;
+}
+.total-price{
+   display: flex;
+   justify-content: flex-end; 
+}
+.total-price table{
+    border-top: 3px solid;
+    width: 80%;
+    max-width: 350px;
+}
+td:last-child{
+    text-align: right;
+}
+th:last-child{
+    text-align: right;
+}
+</style>
+    <script>
+    $(document).ready(function(){
+        $(".wish-icon i").click(function(){
+            $(this).toggleClass("fa-heart fa-heart-o");
+        });
+    });	
+    </script>
+    </style>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                {%if "uname" in request.session %}
+                <a class="navbar-brand" href="#">Hey {{request.session.uname}}!!!</a>
+                {%else%}
+                <a class="navbar-brand" href="#">Shopping Point!!!</a>
+                {%endif%}
+                <a class="navbar-brand" href="#!"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                        
+                        <li class= "nav-item dropdown">
+                            <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown">
+                              Collections
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for cat in cats %} 
+                                <li><a class="dropdown-item" href="/showproducts/{{cat.id}}">{{cat.categoryname}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Collections</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul>
+                              {% for cat in cats %} 
+                             <li><a class="dropdown-item" href="/ShowArts/{{cat.id}}">{{cat.categoryname}}</a></li>
+                             {% endfor %}
+                            </ul>
+                            </div>
+                        </li> -->
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                        {%if "uname" in request.session %}
+                        <li class="nav-item"><a class="nav-link" href="/signout">Sign out</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/showCart">Cart</a></li>
+                        {%else%}
+                        <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/signup">Sign in</a></li>
+                        {%endif%}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        {% block "test1"%}
+        <header class=" py-5 bg-image"></header>
+            <div class=""></div>
+
+            <div class="bg-text">
+            <h1>Surf , Select and Buy!!!</h1>
+            <p>Now your shopping experience no longer limited to within store walls.</p>
+            </div>
+        <!-- </header> -->
+        <section class="bodyy">
+            <div class="container-fluid ">
+              <div class="container ">
+                <div class="col-lg-5 m-auto text-center">
+                  <h6 style="color:#7ac400;">_____________________________________________</h6>
+                  <h1 class="h22">Explore Our Collection</h1>
+                  <h6 style="color: #7ac400;">_____________________________________________</h6>
+              </div>
+                <div class="row">
+                    
+    <div class="container-xl">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+                <!-- Carousel indicators -->
+                <!-- <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>    -->
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner">
+                    <div class="item carousel-item active">
+                        <div class="row">
+                            {%for cat in cats%}
+                            <div class="col-sm-3">
+                                <div class="thumb-wrapper">
+                                    <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                                    <div class="img-box">
+                                        <img src="{{cat.image.url}}" class="img-fluid" alt="">									
+                                    </div>
+                                    <div class="thumb-content">
+                                        <h4>{{cat.categoryname}}</h4>									
+                                        <p>{{cat.desc}}</p>
+                                        <a href="/showproducts/{{cat.id}}" class="btn btn-primary">Click For More</a>
+                                    </div>						
+                                </div>
+                            </div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+            </section>
+            {%endblock%}
+<!-- <center>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="">Login</button>
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+</center> -->
+    <!-- <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form> -->
+</div>
+</div>
+</section>
+<section>
+        <footer class="py-5 bg-dark">
+            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Shopping Point 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'js/scripts.js' %}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </section>
+    </body>
+</html>

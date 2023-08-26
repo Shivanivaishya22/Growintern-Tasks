@@ -1,0 +1,50 @@
+{% extends "home.html"%}<!--Login Popup-->        
+{% block "test1"%}
+
+{% if messages %}
+{%for msg in messages%}
+<div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert"></a>
+{{msg}}
+</div>
+{%endfor%}
+{% endif %}
+<div class="container my-5">        
+    <div class="row">
+            <div class="col-md-5">
+                <div class="main-img">
+                    <img class="img-fluid img-responsive" style="border: 1;" src="static/login.jpg" alt="img">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="main-description px-2">
+                    <div class="category text-bold">
+                       <h3>Welcome</h3> 
+                    </div>
+                    <div class="product-title text-bold my-3">
+                        <h4>Log in to your Account</h4>
+                    </div>
+                    <div>
+                        {{message}}
+                    </div>
+                <form method="post">
+                    {%csrf_token%}
+                    <div class="product-details my-4">
+                        <input type="text" placeholder="Username" name="uname" class="form-control my-3 p-4" required>
+                    </div>
+                    <div class="product-details my-4">
+                        <p class="details-title text-color mb-2"></p>
+                        <input type="password" name="pwd" placeholder="**********" class="form-control border-top-left-radius:30px;" required>
+                    </div>
+                    <div class=" d-flex my-5">
+                        <button type="submit" class="btn1 border-top-left-radius: 30px; border-top-left-radius:30px;">Login</button>
+                    </div>
+                    <div class=" d-flex my-5">                        
+                        <p>Don't Have An Account <a href="/signup">Register Here</a></p>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

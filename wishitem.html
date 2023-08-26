@@ -1,0 +1,144 @@
+{%extends "home.html" %}
+
+{%block "test1"%}
+<script type="text/javascript">
+    function increment(data)
+    {
+        var result = document.getElementById(data);
+        var num = parseInt(result.value);
+        if(num<5)
+        {
+            num+=1;        
+        }
+        result.value =  num;
+    }
+
+    function decrement(data)
+    {
+        var result = document.getElementById(data);
+        var num = parseInt(result.value);
+        if(num>1)
+        {
+            num-=1;
+        }        
+        result.value =  num;
+    }
+</script>
+<style>
+.btnn{
+    height:40px;
+    width: 40px;
+    border: none;
+    outline: none;
+    background-color: rgb(193, 64, 64);
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
+}
+.cart-page{
+    margin: 80px auto;
+}
+table{
+    width: 70%;
+    border-collapse: collapse;
+    margin: auto;
+}
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+th{
+    text-align: left;
+    padding: 5px;
+    color: rgb(112, 25, 25);
+    /* backgro */
+    font-weight: bold;
+}
+td{
+    padding: 10px 5px;
+}
+td input{
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+}
+td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+;
+}
+.total-price{
+   display: flex;
+   justify-content: flex-end; 
+}
+.total-price table{
+    border-top: 3px solid;
+    width: 80%;
+    max-width: 350px;
+}
+td:last-child{
+    text-align: right;
+}
+th:last-child{
+    text-align: right;
+}
+
+</style>
+<!-- wishlist items -->
+<div class="small-container cart-page">
+{% if messages %}
+{%for msg in messages%}
+<div class="alert alert-success alert-dismissible fade show">
+    <a href="#" class="close" data-dismiss="alert"></a>
+<!-- <strong>Success!!</strong> -->
+{{msg}}
+</div>
+{%endfor%}
+{% endif %}
+<table>
+    {%if items%}
+    
+    <tr> <th>Product</th>
+         <th>Quantity</th>
+         <th>Subtotal</th>
+        <th></th> </tr>
+        {%for item in items%}  
+    <tr>
+        <form method="post">   
+            {%csrf_token%}
+            <input type="hidden" name="cart_id" value="{{item.id}}"/>
+        <td>
+            <div class="cart-info">
+                <img src="{{item.prodct.image.url}}">
+            </div>
+            <div>
+                <p>{{item.prodct.pname}}</p>
+                <small>{{item.prodct.price}}</small>
+                <button type="submit" name="action" value="remove" class="btn btn-primary">Remove</button>
+            </div>
+        </td>
+        <td><button type="button" class="btn btn-primary rounded-circle" 
+            onclick="decrement('qty{{item.prodct.id}}')">-</button>
+                <input type="text" id="qty{{item.prodct.id}}" name="qty" value="{{item.qty}}" readonly/>
+                <button type="button" class="btnn" 
+                onclick="increment('qty{{item.prodct.id}}')">+</button> </td>
+        <td> {% widthratio item.prod.price 1 item.qty %}</td> 
+        <td><button type="submit" class="btn btn-primary" name="action" value="addtocart">Add to Cart</button></td>
+        </form>
+    </tr>
+    {%endfor%}
+</table>
+</div>
+{%else%}
+<div class="alert alert-warning alert-dismissible fade show " role="alert">
+    <strong>OOPS</strong> You Don't have anything in your Wishlist
+    <button type="button" class="close bi bi-emoji-frown" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div>
+    <a href="/home" style="color:brown" class="m-auto"> Lets Add something in your Wishlist/Cart</a>
+  </div>
+{% endif %}
+{%endblock%}
