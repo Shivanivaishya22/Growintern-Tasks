@@ -1,13 +1,18 @@
 
-from django.contrib import admin
 from django.urls import path , include
-from . import settings
-from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("User.urls")),
+    path("", views.home),
+    path("login", views.Login),
+    path("signup", views.Signup),
+    path("signout", views.SignOut),
+    path("showproducts/<id>", views.showproducts),
+    path("addtocart", views.addToCart),
+    path("viewdetails/<id>", views.Viewdetails),
+    path("showCart" , views.ShowCart),
+    path("WishItem", views.WishItem),
+    path("about" , views.aboutus),
+    path("makepayment", views.makePayment),
+    path("address" , views.address),
 ]
-
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
