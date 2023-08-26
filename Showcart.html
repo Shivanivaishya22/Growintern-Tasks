@@ -1,0 +1,108 @@
+{%extends "home.html" %}
+
+{%block "test1"%}
+<script type="text/javascript">
+    function increment(data)
+    {
+        var result = document.getElementById(data);
+        var num = parseInt(result.value);
+        if(num<5)
+        {
+            num+=1;        
+        }
+        result.value =  num;
+    }
+
+    function decrement(data)
+    {
+        var result = document.getElementById(data);
+        var num = parseInt(result.value);
+        if(num>1)
+        {
+            num-=1;
+        }        
+        result.value =  num;
+    }
+</script>
+
+<!-- cart items -->
+<div class="small-container cart-page">
+    {%if items%}
+{% if messages %}
+{%for msg in messages%}
+<div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert"></a>
+<strong>Success!!</strong>
+{{msg}}
+</div>
+{%endfor%}
+{% endif %}
+<div class="col-lg-5 m-auto text-center">
+    <h6 style="color:#7ac400;">_____________________________________________</h6>
+    <h1 class="h22">Have A Look At Your Cart</h1>
+    </div>
+<table>
+    
+    <tr> <th>Product</th>
+         <th>Quantity</th>
+         <th>Subtotal</th>
+        <th></th> </tr>
+        {%for item in items%}
+    <tr>
+        <form method="post" >
+            {%csrf_token%}
+            <input type="hidden" name="cart_id" value="{{item.id}}"/>
+        <td>
+            <div class="cart-info">
+                <img src="{{item.prodct.image.url}}" alt="load">
+            </div>
+            <div>
+                <p>{{item.prod.pname}}</p>
+                <small>{{item.prodct.price}}</small>
+                <button type="submit" name="action" value="remove" class="btn btn-primary">Remove</button>
+            </div>
+        </td>
+        <td><button type="button" class="btnn rounded-circle" 
+            onclick="decrement('qty{{item.prodct.id}}')">-</button>
+                <input type="text" id="qty{{item.prodct.id}}" name="qty" value="{{item.qty}}" readonly/>
+                <button type="button" class="btnn" 
+                onclick="increment('qty{{item.prodct.id}}')">+</button> </td>
+        <td> {% widthratio item.prodct.price 1 item.qty %}</td> 
+        <td><button type="submit" class="btn btn-primary" name="action" value="update">Update</button></td>
+        </form>
+    </tr>
+    {%endfor%}
+</table>
+</div>
+<div class="total-price">
+    <table>
+        <tr>
+        <td>Subtotal : </td>
+        <td>{{request.session.subtotal}}</td>
+        </tr>
+        <tr>
+            <td>Tax :</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Delivery Charges : </td>
+            <td style="color : green;">Free Delivery</td>
+        </tr>
+        <tr>
+                <td>Total</td>
+                <td>{{total}} </td>
+        </tr>
+        <tr><td> <button class="btn btn-primary" style="height:40px ; width:100px "><a href="/address">Place Order</a></button></td></tr>
+        <!-- <tr><td>Proceed to Checkout <a href="/makepayment"><b> Pay Now </b></a></td></tr>  -->
+
+    </table>
+</div>
+<!-- {%else%}
+<div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert"></a>
+<strong class="bi bi-emoji-frown">OOPSS!!</strong>
+<H3 >You Don't Have Anything In Your Cart...</H3>
+<!-- <a href="/home" class="bi bi-emoji-smile" >Fill free to collect arts for your happy place...</a> -->
+</div>
+{%endif%}
+{%endblock%}
