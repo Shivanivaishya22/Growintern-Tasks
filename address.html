@@ -1,0 +1,54 @@
+
+{%extends "home.html"%}
+{%block "test1"%}
+
+<style>
+.main-img img {
+    width: 100%;
+}
+</style>
+<div class="container my-5">        
+    <div class="row">
+            <div class="col-md-5">
+                <!-- <div class="main-img"> 
+                    <img class="img-fluid img-responsive" style="border: 1;" src="static/login.jpg" alt="img">
+                </div> -->
+            </div>
+            <div class="">
+                <div class="main-description px-2">
+                    <div class="text-bold">
+                       <h3>Adress For Shipping </h3> 
+                    </div>
+                <form method="post">
+                    {%csrf_token%}
+                    <div class="m-auto">
+                        <input type="text" placeholder="Name" name="namee" class="form-control my-3 p-4" required>
+                    </div>
+                    <div class="m-auto">
+                      <input type="text" placeholder="Email" name="email" class="form-control my-3 p-4" required>
+                  </div>
+                <div class="m-auto">
+                  <input type="text" placeholder="Tring - Tring" name="contact" class="form-control my-3 p-4" required>
+              </div>
+              <div class="m-auto">
+                <input type="text" placeholder="House no , City" name="add" class="form-control my-3 p-4" required>
+            </div>
+            <div class=" m-auto">
+                <p class="details-title text-color mb-2"></p>
+                <input type="text" name="town" placeholder="Village/Town" class="form-control border-top-left-radius:30px;" required>
+            </div>
+            <div class=" m-auto">
+                <p class="details-title text-color mb-2"></p>
+                <input type="text" name="city" placeholder="City , State" class="form-control border-top-left-radius:30px;" required>
+            </div>
+           <center>
+                    <div class="center">
+                        
+                        <button type="submit" class="btn btn-primary" style="height:50px ; width:120px" value="payment"> Make Payment </button>
+                  </div>
+              </center> 
+                </form>
+                </div>
+            </div>
+        </div></div>
+{%endblock%}
